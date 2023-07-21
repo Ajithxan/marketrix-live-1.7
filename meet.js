@@ -1,4 +1,4 @@
-const meetVersion = "1.6"
+const meetVersion = "1.7"
 const CDNlink =  `https://cdn.jsdelivr.net/gh/Ajithxan/marketrix-live-${meetVersion}/` // 'http://localhost/creativehub/meet-source/'
 console.log(CDNlink);
 const startingTime = new Date().getTime()
@@ -27,8 +27,10 @@ envScript.setAttribute('src', `${CDNlink}constants/env.js`)
 videoSDKScript.setAttribute('src', "https://sdk.videosdk.live/js-sdk/0.0.67/videosdk.js")
 watchScript.setAttribute('src', `${CDNlink}libraries/watch.js`)
 
-const socketUrl = "http://localhost:8080" //"http://socket-v2.marketrix.io/" //"https://marketrix-soc.creative-hub.co/"
+const socketUrl = "https://socket-v2.marketrix.io/" //"https://marketrix-soc.creative-hub.co/"
+const serverBaseUrl = "https://api-v2.marketrix.io/";
 // script tags
+
 document.body.prepend(sweetAlert2Script)
 document.body.prepend(socketClientScript)
 document.body.prepend(watchScript)
@@ -629,6 +631,12 @@ const sentInquiryToDb = (data) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inquiry),
     };
+    fetch(`${serverBaseUrl}meet-live/inquiries/create`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("data", data);
+    });
+
 }
 
 const mouse = {
