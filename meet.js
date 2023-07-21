@@ -1,5 +1,5 @@
-const meetVersion = "0.2.2"
-const CDNlink =  `https://cdn.jsdelivr.net/gh/aiyashCreative/meet-snippet${meetVersion}/` // 'http://localhost/creativehub/meet-source/'
+const meetVersion = "1.6"
+const CDNlink =  `https://cdn.jsdelivr.net/gh/Ajithxan/marketrix-live-${meetVersion}/` // 'http://localhost/creativehub/meet-source/'
 console.log(CDNlink);
 const startingTime = new Date().getTime()
 // const jqueryScript = document.createElement('script')
@@ -295,8 +295,7 @@ const submit = async () => {
                     meetingId: data.liveMeet?.video_sdk?.meeting?.meetingId,
                     token: data.liveMeet?.video_sdk?.token,
                     visitorSocketId: data.liveMeet?.visitor_socket_id,
-                    visitorPosition: {},
-                    appId: "123",
+                    visitorPosition: {}
                 };
 
                 socket?.emit("visitorJoinLive", visitor);
@@ -620,6 +619,7 @@ const sentInquiryToDb = (data) => {
         inquiry_type: data.inquiryType,
         inquiry_status: "requested",
         website_domain: currentUrl,
+        app_id: appId,
     };
 
 
